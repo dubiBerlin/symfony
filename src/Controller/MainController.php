@@ -28,7 +28,6 @@ class MainController extends AbstractController
     public function custom(Request $req){
       dump($req);
       $name = $req->get("name");
-      return new Response("<h1>Custom Vue js is ".$name."</h1>".
-                            "<h2>Custom</h2>"); 
+      return   $this->render("home/custom.html.twig",["name"=>$name]);
     }
 }
