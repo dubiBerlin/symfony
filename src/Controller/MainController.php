@@ -25,9 +25,13 @@ class MainController extends AbstractController
 
     
     /**
-     * @Route("/custom/{name}", name="custom")
+     * // ? after name makes is optional
+     * @Route("/custom/{name?}", name="custom")
+     * @param Request req
+     * @return Response
      */
     public function custom(Request $req){
+      dump($req);
       return new Response("<h1>Custom Vue js is coming</h1>".
                             "<h2>Custom</h2>"); 
     }
