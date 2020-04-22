@@ -24,7 +24,7 @@ class MainController extends AbstractController
 
     
     /**
-     * @Route("/custom", name="custom")
+     * @Route("/custom/{name}", name="custom")
      */
     public function custom(){
       return new Response("<h1>Custom Vue js is coming</h1>".
