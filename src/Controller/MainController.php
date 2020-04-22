@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class MainController extends AbstractController
@@ -26,7 +27,7 @@ class MainController extends AbstractController
     /**
      * @Route("/custom/{name}", name="custom")
      */
-    public function custom(){
+    public function custom(Request $req){
       return new Response("<h1>Custom Vue js is coming</h1>".
                             "<h2>Custom</h2>"); 
     }
