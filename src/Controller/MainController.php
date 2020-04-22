@@ -21,4 +21,13 @@ class MainController extends AbstractController
         return new Response("<h1>Welcome VueJs and Symfony</h1>".
                             "<h2>WhatsUp</h2>"); 
     }
+
+    
+    /**
+     * @Route("/custom", name="custom")
+     */
+    public function custom(){
+      return new Response("<h1>Custom Vue js is coming</h1>".
+                            "<h2>Custom</h2>"); 
+    }
 }
