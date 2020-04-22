@@ -32,7 +32,8 @@ class MainController extends AbstractController
      */
     public function custom(Request $req){
       dump($req);
-      return new Response("<h1>Custom Vue js is coming</h1>".
+      $name = $req->get("name");
+      return new Response("<h1>Custom Vue js is ".$name."</h1>".
                             "<h2>Custom</h2>"); 
     }
 }
