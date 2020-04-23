@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/post", name="post")
@@ -11,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/", name="post")
+     * @Route("/", name="index")
      */
     public function index()
     {
@@ -23,13 +25,12 @@ class PostController extends AbstractController
     
     
     /**
-     * @Route("/post/create}", name="create")
+     * @Route("/create}", name="create")
      * @param Request req
-     * @return Response
      */
-    // public function create(Request $req){
-    //   $post = new Post();
+    public function create(Request $req){
+      $post = new Post();
 
-    //   $post->setTitle("This is going to be a title!");
-    // }
+      $post->setTitle("This is going to be a title!");
+    }
 }
