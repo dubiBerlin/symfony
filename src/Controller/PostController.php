@@ -16,4 +16,17 @@ class PostController extends AbstractController
             'controller_name' => 'PostController',
         ]);
     }
+
+    
+    
+    /**
+     * @Route("/post/create}", name="create")
+     * @param Request req
+     * @return Response
+     */
+    public function create(Request $req){
+      $post = new Post();
+
+      $post->setTitle("This is going to be a title!");
+    }
 }
