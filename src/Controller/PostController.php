@@ -20,7 +20,7 @@ class PostController extends AbstractController
     public function index(PostRepository $postRepository)
     {
       $posts = $postRepository->findAll();
-
+        
         return $this->render('post/index.html.twig', [
             'posts' => $posts,
         ]);
@@ -56,11 +56,26 @@ class PostController extends AbstractController
     public function show($id, PostRepository $postRepository){
 
       $post = $postRepository->find($id);
-      dump($post); 
-       die;
-
 
       // create the show view
-      return $this->render("show.html.twig",["post"=>$post]);
+      return $this->render("post/show.html.twig",["post"=>$post,"id"=>$id]);
     }
+
+    // /**
+    //  * description:  gets selected post and displays it
+    //  * @Route("/show/{id}", name="show")
+    //  * @param Post $post
+    //  * @return Response
+    //  */
+    // public function show(Post $post){
+    //   if($post==null){
+    //     // dump("");
+    //     return new Response("Post with such id does not exist");
+    //   }else{
+    //     dump($post); 
+    //     die;
+    //     // create the show view
+    //     return $this->render("show.html.twig",["post"=>$post]);
+    //   }
+    // }
 }
