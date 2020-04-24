@@ -11,16 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/", name="main")
+     * @Route("/", name="home")
      */
     public function index()
     {
-        // return $this->json([
-        //     'message' => 'Welcome to freeCodeCamp!',
-        //     'path' => 'src/Controller/MainController.php',
-        // ]);
-        return new Response("<h1>Welcome VueJs and Symfony</h1>".
-                            "<h2>WhatsUp</h2>"); 
+        return $this->render("home/index.html.twig");
     }
 
     
@@ -31,9 +26,8 @@ class MainController extends AbstractController
      * @return Response
      */
     public function custom(Request $req){
-      dump($req);
+      // dump($req);
       $name = $req->get("name");
-      return new Response("<h1>Custom Vue js is ".$name."</h1>".
-                            "<h2>Custom</h2>"); 
+      return   $this->render("home/custom.html.twig",["name"=>$name]);
     }
 }
