@@ -16,6 +16,7 @@
       <tr>
         <td>{{post.id}}</td>
         <td> <a href="{{ path("postshow",{id:post.id}) }}">{{post.title}}</a> </td>
+        <td> <a class="btn btn-danger" href="{{ path("postdelete",{id:post.id}) }}">Delete</a></td>
       </tr>
     {% endfor %}
     </tbody>
