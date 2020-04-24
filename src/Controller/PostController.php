@@ -69,13 +69,17 @@ class PostController extends AbstractController
      * @return Response
      */
     public function remove(Post $post){
-      $id = $post.getId();
       $em = $this->getDoctrine()->getManager();
       $em->remove($post);
       $em->flush();
       // create the show view
-      return $this->render("post/remove.html.twig",["id"=>$id]);
+      return $this->redirect($this->generateUrl("postindex"));
+      
     }
+
+
+
+
 
     // /**
     //  * description:  gets selected post and displays it
