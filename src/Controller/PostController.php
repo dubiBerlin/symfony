@@ -27,12 +27,18 @@ class PostController extends AbstractController
     /**
      * @Route("/create}", name="create")
      * @param Request req
+     * @return Response
      */
     public function create(Request $req){
       // create new post
       $post = new Post();
       $post->setTitle("This is going to be a title!");
+ 
+      // entity manager
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($post);
 
       // return a response
+      return new Response("Post was created!");
     }
 }
