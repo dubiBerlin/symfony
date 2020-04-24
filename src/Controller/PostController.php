@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Post;
 
 /**
  * @Route("/post", name="post")
@@ -13,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("", name="index")
      */
     public function index()
     {
@@ -25,7 +26,7 @@ class PostController extends AbstractController
     
     
     /**
-     * @Route("/create}", name="create")
+     * @Route("/create", name="create")
      * @param Request req
      * @return Response
      */
@@ -37,6 +38,7 @@ class PostController extends AbstractController
       // entity manager
       $em = $this->getDoctrine()->getManager();
       $em->persist($post);
+      $em->flush();
 
       // return a response
       return new Response("Post was created!");
