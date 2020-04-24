@@ -29,8 +29,10 @@ class PostController extends AbstractController
      * @param Request req
      */
     public function create(Request $req){
+      // create new post
       $post = new Post();
-
       $post->setTitle("This is going to be a title!");
+
+      // return a response
     }
 }
