@@ -44,7 +44,7 @@ class PostController extends AbstractController
       $em->flush();
 
       // return a response
-      return new Response("Post was created!");
+      return  $this->redirect($this->generateUrl("postindex"));//new Response("Post was created!");
     }
 
     /**
