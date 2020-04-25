@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Post;
 use App\Repository\PostRepository;
+use App\Form\PostType;
 
 /**
  * @Route("/post", name="post")
@@ -36,15 +37,19 @@ class PostController extends AbstractController
     public function create(Request $req){
       // create new post
       $post = new Post();
-      $post->setTitle("This is going to be a title!");
+      
+      $form = $this->createForm(PostType::class, $post);
  
       // entity manager
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($post);
-      $em->flush();
+      // $em = $this->getDoctrine()->getManager();
+      // $em->persist($post);
+      // $em->flush();
 
       // return a response
-      return  $this->redirect($this->generateUrl("postindex"));//new Response("Post was created!");
+      // return  $this->redirect($this->generateUrl("postindex"));//new Response("Post was created!");
+      return $this->render('post/create.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
