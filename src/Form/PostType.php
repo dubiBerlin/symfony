@@ -14,8 +14,7 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add("save",SubmitType::class)
-        ;
+            ->add("save",SubmitType::class, ["attr"=>["class"=>"btn btn-primary float-right" ]]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
