@@ -8,9 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/registration", name="registration")
+     * @Route("/register", name="register")
      */
-    public function index()
+    public function register()
     {
         return $this->render('registration/index.html.twig', [
             'controller_name' => 'RegistrationController',
