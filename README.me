@@ -1,3 +1,7 @@
 # PHP COMMANDS
 
 debug routes: php bin/console debug:route
+
+# add schema to db or create table via schema
+php bin/console doctrine:schema:update --force
+php bin/console doctrine:schema:update --dump-sql
