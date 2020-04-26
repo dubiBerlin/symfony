@@ -7,13 +7,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Entity\User;
 
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="register")
      */
-    public function register()
+    public function register(Request $req, UserPasswordEncoderInterface $encoder)
     {
 
       $form = $this->createFormBuilder()
@@ -32,6 +36,24 @@ class RegistrationController extends AbstractController
         ]
       ])
       ->getForm();
+
+      $form->handleRequest($req);
+
+      if($form->isSubmitted()){
+        $params = $form->getData();
+        
+        $user = new User();        
+        $encoded = $encoder->encodePassword($user,$params["password"]);
+
+        $user->setUsername($params["username"]);
+        $user->setPassword($encoded);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl("app_login"));
+      }
 
       return $this->render('registration/index.html.twig', [
           'form' => $form->createView() 
