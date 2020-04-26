@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class RegistrationController extends AbstractController
 {
@@ -12,8 +13,17 @@ class RegistrationController extends AbstractController
      */
     public function register()
     {
+
+      $form = $this->createFormBuilder()->add("username")->add("password", RepeatedType::class, [
+        'invalid_message' => 'The password fields must match.',
+        'options' => ['attr' => ['class' => 'password-field']],
+        'required' => true,
+        'first_options'  => ['label' => 'Password'],
+        'second_options' => ['label' => 'Repeat Password'],
+    ]);
+
         return $this->render('registration/index.html.twig', [
-            'controller_name' => 'RegistrationController',
+            
         ]);
     }
 }
