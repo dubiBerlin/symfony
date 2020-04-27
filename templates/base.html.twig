@@ -16,9 +16,11 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href={{path("custom", {"name":"beau carnes"})}}>Greet beau carnes</a>
-              </li>
+              {% if app.user %}  
+                <li class="nav-item">
+                  <a class="nav-link" href={{path("custom", {"name":"{%app.user.username % }"})}}> {{ app.user.username }}</a>
+                </li>
+              {% endif %}
               <li class="nav-item">
                 <a class="nav-link" href={{path("postcreate")}}>Create post</a>
               </li>
@@ -28,11 +30,16 @@
               <li class="nav-item">
                 <a class="nav-link" href={{path("register")}}>Registration</a>
               </li>
+              {% if app.user %}  
+                <li class="nav-item">
+                   <a class="btn btn-secondary" href="{{ path('app_logout') }}">Logout</a>
+                </li>
+              {% endif %}
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <!--<form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form>-->
           </div>
         </nav>
         {% block body %}{% endblock %}
