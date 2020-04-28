@@ -22,7 +22,7 @@ class Category
     private $name;
 
     /**
-     * @ORM|OneToMany(targetEntity="App|Entity|Post", inversedBy="post)
+     * @ORM|OneToMany(targetEntity="App|Entity|Post", mappedBy="category)
      */
     private $post;
 
