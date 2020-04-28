@@ -52,12 +52,7 @@ class PostController extends AbstractController
         $file = $req->files->get("post")["attachment"];
         
         if($file){
-          $filename = md5(uniqid()).".".$file->guessClientExtension();
-
-          $file->move(
-            $this->getParameter("uploads_directory"),
-            $filename
-          );
+         
 
           $post->setImage($filename);
         }
