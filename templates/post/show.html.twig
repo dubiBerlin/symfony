@@ -6,7 +6,9 @@
   {% if post!=null  %}
     <h2>id: {{post.id}}</h2>
     <h2>Title: {{post.title}}</h2>
+    <em>  {{ post.category }}</em>  
+    <img src="{{ asset('uploads/') }}{{post.image}}"  class="gallery-thumb" >
    {% else %} 
-   <h2> Es gibt keinen Eintrag mit der ID {{id}} </h2>
+    <h2> Es gibt keinen Eintrag mit der ID {{id}} </h2>
    {% endif %}
  {% endblock %}
