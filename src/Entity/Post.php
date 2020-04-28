@@ -28,6 +28,11 @@ class Post
      */
     private $image;
 
+    /**
+     * @ORM|ManyToOne(targetEntity="App|Entity|Category", inversedBy="post")
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;

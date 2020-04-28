@@ -21,6 +21,12 @@ class Category
      */
     private $name;
 
+    /**
+     * @ORM|OneToMany(targetEntity="App|Entity|Post", inversedBy="post)
+     */
+    private $post;
+
+
     public function getId(): ?int
     {
         return $this->id;
