@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Entity\Post;
 use App\Repository\PostRepository;
 use App\Form\PostType;
+use App\Services\FileUploader;
+
 
 /**
  * @Route("/post", name="post")
@@ -33,9 +35,10 @@ class PostController extends AbstractController
     /**
      * @Route("/create", name="create")
      * @param Request req
+     * @param FileUploader $fileUploader
      * @return Response
      */
-    public function create(Request $req){
+    public function create(Request $req, FileUploader $fileUploader){
       // create new post
       $post = new Post();
       
@@ -52,7 +55,7 @@ class PostController extends AbstractController
         $file = $req->files->get("post")["attachment"];
         
         if($file){
-         
+         $filename = $fileUploader->uploadFile($file);
 
           $post->setImage($filename);
         }

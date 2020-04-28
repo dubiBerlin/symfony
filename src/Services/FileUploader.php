@@ -3,8 +3,8 @@
 
 namespace App\Services;
 
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 class FileUploader {
