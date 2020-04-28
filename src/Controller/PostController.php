@@ -85,7 +85,12 @@ class PostController extends AbstractController
      */
     public function show($id, PostRepository $postRepository){
 
-      $post = $postRepository->find($id);
+      // $post = $postRepository->find($id);
+      $post = $postRepository->findPostWithCategory($id)["0"];
+
+      dump($post);
+      // die;
+ 
 
       // create the show view
       return $this->render("post/show.html.twig",["post"=>$post,"id"=>$id]);
