@@ -11,6 +11,7 @@ use App\Entity\Post;
 use App\Repository\PostRepository;
 use App\Form\PostType;
 use App\Services\FileUploader;
+use App\Services\Notification;
 
 
 /**
@@ -38,7 +39,7 @@ class PostController extends AbstractController
      * @param FileUploader $fileUploader
      * @return Response
      */
-    public function create(Request $req, FileUploader $fileUploader){
+    public function create(Request $req, FileUploader $fileUploader, Notification $notification){
       // create new post
       $post = new Post();
       
