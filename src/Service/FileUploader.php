@@ -4,17 +4,30 @@
 namespace App\Services;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Psr\Container\ContainerInterface;
 
 
 class FileUploader {
+
+  /**
+   * @var ContainerInterface
+   */
+  private $container;
+
+  public function __construct(ContainerInterface $container)
+  { 
+    $this->container = $container;
+  }
+
 
   public function uploadFile( UploadedFile $file){
     $filename = md5(uniqid()).".".$file->guessClientExtension();
 
     $file->move(
-      $this->getParameter("uploads_directory"),
+      $this->container->getParameter("uploads_directory"),
       $filename
     );
+    return $filename;
   }
 
 }
