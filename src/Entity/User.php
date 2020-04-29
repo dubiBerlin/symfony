@@ -40,12 +40,6 @@ class User implements UserInterface
      */
     private $post;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $image;
-
-
     public function __construct()
     {
         $this->post = new ArrayCollection();
