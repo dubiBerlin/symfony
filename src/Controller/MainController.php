@@ -26,7 +26,6 @@ class MainController extends AbstractController
      * @return Response
      */
     public function custom(Request $req){
-      // dump($req);
       $name = $req->get("name");
       return   $this->render("home/custom.html.twig",["name"=>$name]);
     }

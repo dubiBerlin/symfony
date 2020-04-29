@@ -9,7 +9,7 @@
     </div>
 {% endfor %}
  <h2> List of all Posts</h2>
-  <table class="table table-striped">
+<!--  <table class="table table-striped">
   {{posts|json_encode }}
     <thead>
       <tr>
@@ -26,7 +26,7 @@
       </tr>
     {% endfor %}
     </tbody>
-  </table>
+  </table> -->
 
 <div id="app" data-posts="{{posts|json_encode }}" data-pathShow="{{path("postshow",{id:"placeholderId"})}}" data-pathDelete="{{path("postdelete",{id:"placeholderId"})}}"  >
 </div>

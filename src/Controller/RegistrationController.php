@@ -46,7 +46,6 @@ class RegistrationController extends AbstractController
 
       if($form->isSubmitted()){
         $params = $form->getData();
-        
         $user = new User();        
         $encoded = $encoder->encodePassword($user,$params["password"]);
 

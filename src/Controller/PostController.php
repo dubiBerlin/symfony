@@ -34,8 +34,6 @@ class PostController extends AbstractController
         'posts' => $posts,
       ]);
     }
-
-    
     
     /**
      * @Route("/create", name="create")
@@ -61,7 +59,6 @@ class PostController extends AbstractController
         
         if($file){
          $filename = $fileUploader->uploadFile($file);
-
           $post->setImage($filename);
         }
         $post->setUser($user);
