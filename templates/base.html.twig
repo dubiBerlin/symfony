@@ -10,71 +10,31 @@
     </head>
     <body>
       <div class="container">
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a href="#" class="navbar-brand">Brand</a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav">
-            <a href="#" class="nav-item nav-link active">Home</a>
-            <a href="#" class="nav-item nav-link">Profile</a>
-            <a href="#" class="nav-item nav-link">Messages</a>
-            <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
-        </div>
-        <div class="navbar-nav ml-auto">
-            <a href="#" class="nav-item nav-link">Login</a>
-        </div>
-    </div>
-</nav>
-
-        <!--<nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href={{path("home")}} >freeCodeCamp</a>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+          <a class="navbar-brand" href={{path("home")}} >Lumas</a>
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+          {% if app.user %}  
+            <div class="navbar-nav">
+                <a href={{path("custom", {"name": app.user.username })}} class="nav-item nav-link active">{{ app.user.username }}</a>
+                <a href={{path("postcreate")}} class="nav-item nav-link">Create Post</a>
+                <a href={{path("postindex")}} class="nav-item nav-link">My Posts</a>
             </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-            <ul class="nav navbar-nav">
-              {% if app.user %}  
-                <li class="nav-item">
-                  <a class="nav-link" href={{path("custom", {"name": app.user.username })}}> {{ app.user.username }}</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href={{path("postcreate")}}>+  post</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href={{path("postindex")}}>Posts</a>
-                </li>
-              {% endif %}
-              {% if app.user %}  
-                <li class="nav-item">
-                   <a class="btn btn-secondary" href="{{ path('app_logout') }}">Logout</a>
-                </li>
-                {% else %}
-                  <li class="nav-item">
-                    <a class="nav-link" href={{path("app_login")}}>Login</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href={{path("register")}}>Registration</a>
-                  </li>
-              {% endif %}
-            </ul>
+          {% endif %}  
+            <div class="navbar-nav ml-auto">
+            {% if app.user %}  
+              <a href="{{ path('app_logout')}}"  class="nav-item nav-link">Logout</a>
+            {% else  %}
+              <a href={{path("app_login")}} class="nav-item nav-link">Login</a>
+              <a href={{path("register")}} class="nav-item nav-link">Register</a>
+            {% endif %}
+            </div>
           </div>
-        </nav> ->
+        </nav>
 
-        <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href={{path("home")}} >freeCodeCamp</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            
-          </div>
-        </nav> -->
         {% block body %}{% endblock %}
       </div>
         
