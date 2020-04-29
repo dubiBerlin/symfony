@@ -40,7 +40,7 @@ class User implements UserInterface
      */
     private $post;
 
-    public function __construct()
+    public   function __construct()
     {
         $this->post = new ArrayCollection();
     }
