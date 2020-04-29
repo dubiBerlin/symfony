@@ -28,8 +28,7 @@
     </tbody>
   </table>
 
-<div id="app">
-  <postList > </postList>
+<div id="app" data-posts="{{posts|json_encode }}" data-pathShow="{{path("postshow",{id:"placeholderId"})}}" data-pathDelete="{{path("postdelete",{id:"placeholderId"})}}"  >
 </div>
 
  {% endblock %}
