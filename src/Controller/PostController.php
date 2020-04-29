@@ -56,8 +56,8 @@ class PostController extends AbstractController
         // entity manager
         $em = $this->getDoctrine()->getManager();
 
-        //** @var uploadedFile $file */
-        $file = $req->files->get("post")["profile_image"];
+        //** @var uploadedFile $file  */
+        $file = $req->files->get("post")["attachment"];
         
         if($file){
          $filename = $fileUploader->uploadFile($file);
