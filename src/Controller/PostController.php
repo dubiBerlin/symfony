@@ -8,10 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Entity\Post;
+use App\Entity\User;
 use App\Repository\PostRepository;
 use App\Form\PostType;
 use App\Services\FileUploader;
 use App\Services\Notification;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 
 /**
@@ -39,7 +41,7 @@ class PostController extends AbstractController
      * @param FileUploader $fileUploader
      * @return Response
      */
-    public function create(Request $req, FileUploader $fileUploader, Notification $notification){
+    public function create(Request $req, FileUploader $fileUploader, Notification $notification, UserInterface $user){
       // create new post
       $post = new Post();
       
@@ -60,6 +62,7 @@ class PostController extends AbstractController
 
           $post->setImage($filename);
         }
+        $post->setUser($user);
 
         $em->persist($post);
         $em->flush();
