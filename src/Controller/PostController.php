@@ -89,7 +89,6 @@ class PostController extends AbstractController
       // $post = $postRepository->find($id);
       $post = $postRepository->findPostWithCategory($id)["0"];
 
-      dump($post);
       // die;
  
 
