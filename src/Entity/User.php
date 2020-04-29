@@ -51,6 +51,11 @@ class User implements UserInterface
     }
 
     /**
+     * @ORM\Column(type="string", length=200)
+     */
+    private $image;
+
+    /**
      * A visual identifier that represents this user.
      *
      * @see UserInterface
@@ -145,6 +150,18 @@ class User implements UserInterface
                 $post->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
