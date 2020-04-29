@@ -34,8 +34,6 @@ class PostController extends AbstractController
         'posts' => $posts,
       ]);
     }
-
-    
     
     /**
      * @Route("/create", name="create")
@@ -56,12 +54,11 @@ class PostController extends AbstractController
         // entity manager
         $em = $this->getDoctrine()->getManager();
 
-        //** @var uploadedFile $file */
+        //** @var uploadedFile $file  */
         $file = $req->files->get("post")["attachment"];
         
         if($file){
          $filename = $fileUploader->uploadFile($file);
-
           $post->setImage($filename);
         }
         $post->setUser($user);

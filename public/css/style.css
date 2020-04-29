@@ -65,3 +65,10 @@ li {
   transform: scaleY(0);
   transform-origin: center top;
 }
+
+
+/********* login *********/
+.login-form{
+  width: 340px;
+  margin: 50px auto;
+}

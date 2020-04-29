@@ -11,13 +11,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
+use App\Services\FileUploader;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="register")
      */
-    public function register(Request $req, UserPasswordEncoderInterface $encoder)
+    public function register(Request $req, UserPasswordEncoderInterface $encoder, FileUploader $fileUploader)
     {
 
       $form = $this->createFormBuilder()
@@ -30,6 +32,9 @@ class RegistrationController extends AbstractController
         'first_options'  => ['label' => 'Password'],
         'second_options' => ['label' => 'Confirm Password'],
       ])
+      ->add('attachment',FileType::class,  [
+        "mapped"=>false
+      ])
       ->add("Registrieren",SubmitType::class,[
         "attr"=>[
           "class"=>"btn btn-success float-right"
@@ -41,12 +46,18 @@ class RegistrationController extends AbstractController
 
       if($form->isSubmitted()){
         $params = $form->getData();
-        
         $user = new User();        
         $encoded = $encoder->encodePassword($user,$params["password"]);
 
         $user->setUsername($params["username"]);
         $user->setPassword($encoded);
+        
+        $file = $req->files->get("form")["attachment"];
+        
+        if($file){
+         $filename = $fileUploader->uploadFile($file);
+         $user->setImage($filename);
+        }
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);

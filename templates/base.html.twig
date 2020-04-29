@@ -20,11 +20,14 @@
             <ul class="navbar-nav mr-auto">
               {% if app.user %}  
                 <li class="nav-item">
-                  <a class="nav-link" href={{path("custom", {"name":"{%app.user.username % }"})}}> {{ app.user.username }}</a>
+                  <a class="nav-link" href={{path("custom", {"name": app.user.username })}}> {{ app.user.username }}</a>
                 </li>
               {% endif %}
               <li class="nav-item">
-                <a class="nav-link" href={{path("postcreate")}}>Create post</a>
+                <a class="nav-link" href={{path("postcreate")}}>+  post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href={{path("postindex")}}>Posts</a>
               </li>
               {% if app.user %}  
                 <li class="nav-item">

@@ -35,7 +35,7 @@ const vm = new Vue({
     // console.log("MOUNTED");
     this.t = setInterval(() => {
       this.intervallFunction();
-    }, 500);
+    }, 2000);
     console.log(this.posts);
   },
   methods: {
