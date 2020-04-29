@@ -53,7 +53,7 @@ class RegistrationController extends AbstractController
         $user->setUsername($params["username"]);
         $user->setPassword($encoded);
         
-        $file = $req->files->get("post")["attachment"];
+        $file = $req->files->get("form")["attachment"];
         
         if($file){
          $filename = $fileUploader->uploadFile($file);
