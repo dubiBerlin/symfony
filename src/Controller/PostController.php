@@ -26,13 +26,9 @@ class PostController extends AbstractController
      */
     public function index(PostRepository $postRepository)
     {
-      
-      
       $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-      $user = $this->getUser();
-      dump($user->getId());
       
-      $posts = $postRepository->findAll();
+      $posts = $postRepository->findAllPostByUser($this->getUser());
 
       return $this->render('post/index.html.twig', [
         'posts' => $posts,
