@@ -26,10 +26,11 @@ const vm = new Vue({
       <div class="post-item-body" >
         <div>{{item.title}}</div>
         <div>{{item.message}}</div>
-        <img class="post-item-profile-img" :src="profile_image"  >
+        <img  v-show="item.image"  :src="uploadFolder + item.image"  >
       </div>
+
       <div class="post-item-footer" >
-        iam a footer
+        {{item.image}}
       </div>
     </div>
 
