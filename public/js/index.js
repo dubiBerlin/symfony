@@ -16,11 +16,16 @@ const vm = new Vue({
 
     <div class="post-item" v-for="item in list" :key="item.id">
       <div class="post-item-header" >
-
-        <img class="post-item-profile-img" src=""  >
+        <img class="post-item-profile-img" :src="profile_image"  >
+        <span> {{profile_username}}  </span>
+        <i class="fa fa-camera"></i>
+        <i class="fa fa-angellist"></i>
       </div>
+      <hr/>
       <div class="post-item-body" >
-      
+        <span>{{item.title}}</span>
+        <span>{{item.message}}</span>
+        <img class="post-item-profile-img" :src="profile_image"  >
       </div>
     </div>
 
@@ -32,6 +37,7 @@ const vm = new Vue({
     pathDelete: "",
     posts:"",
     profile_image:"",
+    profile_username:"",
     maxId: 3,
     list: []
   },
@@ -40,7 +46,10 @@ const vm = new Vue({
     this.pathShow = this.$el.attributes['data-pathShow'].value;
     this.pathDelete = this.$el.attributes['data-pathDelete'].value;
     this.profile_image = this.$el.attributes['data-profile-image'].value;
+    this.profile_username = this.$el.attributes['data-profile-username'].value;
     console.log("PRofile image: ",this.profile_image);
+    console.log(this.posts);
+    console.log(this.profile_username);
   },
   mounted() {
     // console.log("MOUNTED");
