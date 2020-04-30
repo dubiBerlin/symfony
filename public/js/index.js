@@ -1,3 +1,7 @@
+
+     
+
+
 const vm = new Vue({
   el: '#app',
   name: "postLists", 
@@ -8,13 +12,12 @@ const vm = new Vue({
     <button type="button" @click="remove">Remove</button>
     <button type="button" @click="reverse">Sortieren</button>
   </div>
-  <transition-group tag="ul" name="list">
-    <li v-for="item in list" :key="item.id">
-      id: {{ item.id }}<br/>
-      title:  {{ item.title }}
-      <!--<button class="btn btn-danger" @click="deletePost(item.id)" >Delete</button>-->
-      <a class="btn btn-danger" :href="pathDelete.replace('placeholderId',item.id)">Delete</a>
-    </li>
+  <transition-group tag="div" name="list">
+
+    <div class="post-item" v-for="item in list" :key="item.id">
+    
+    </div>
+
   </transition-group>
 </div>
   `,

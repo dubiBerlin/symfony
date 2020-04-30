@@ -25,6 +25,11 @@ class Post
     private $title;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $message;
+
+    /**
      * @ORM\Column(type="string", length=100)
      */
     private $image;
@@ -88,6 +93,18 @@ class Post
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): self
+    {
+        $this->message = $message;
 
         return $this;
     }

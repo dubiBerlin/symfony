@@ -28,7 +28,7 @@ button:hover {
 ul {
   position: relative;
   padding-top: 18px;
-  width: 420px;
+  width: 100%;
 }
 
 li {
@@ -37,6 +37,16 @@ li {
   padding: 8px 12px;
   width: 100%;
   background-color: #e5e5e5;
+}
+
+
+.post-item{
+  width: 100%;
+  min-height:  70px;
+  background-color: beige;
+  margin-top: 5px;
+  border-style: 1px solid #eee;
+  border-radius: 5px;
 }
 
 .list-enter-active,
