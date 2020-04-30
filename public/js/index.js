@@ -41,6 +41,7 @@ const vm = new Vue({
     pathDelete: "",
     posts:"",
     profile_image:"",
+    uploadFolder:"",
     profile_username:"",
     maxId: 3,
     list: []
@@ -49,7 +50,8 @@ const vm = new Vue({
     this.posts = JSON.parse(this.$el.attributes['data-posts'].value);
     this.pathShow = this.$el.attributes['data-pathShow'].value;
     this.pathDelete = this.$el.attributes['data-pathDelete'].value;
-    this.profile_image = this.$el.attributes['data-profile-image'].value;
+    this.uploadFolder = this.$el.attributes['data-upload-folder'].value;
+    this.profile_image = `${this.uploadFolder}${this.$el.attributes['data-profile-image'].value}`;
     this.profile_username = this.$el.attributes['data-profile-username'].value;
     console.log("PRofile image: ",this.profile_image);
     console.log(this.posts);

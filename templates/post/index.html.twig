@@ -31,8 +31,9 @@
 <div id="app" 
   data-posts="{{posts|json_encode }}" 
   data-pathShow="{{path("postshow",{id:"placeholderId"})}}" 
+  data-upload-folder="{{ asset('uploads/') }}"
   data-pathDelete="{{path("postdelete",{id:"placeholderId"})}}"  
-  data-profile-image="{{ asset('uploads/') }}{{profile_image}}"
+  data-profile-image="{{profile_image}}"
   data-profile-username="{{app.user.username}}"  
 >
 </div> 
