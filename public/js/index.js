@@ -1,12 +1,10 @@
 
-     
-
 
 const vm = new Vue({
   el: '#app',
   name: "postLists", 
   template: `
-  <div id="app">
+  <div>
   <div>
     <button type="button" @click="add">Add</button>
     <button type="button" @click="remove">Remove</button>
@@ -17,15 +15,21 @@ const vm = new Vue({
     <div class="post-item" v-for="item in list" :key="item.id">
       <div class="post-item-header" >
         <img class="post-item-profile-img" :src="profile_image"  >
-        <span> {{profile_username}}  </span>
-        <i class="fa fa-camera"></i>
-        <i class="fa fa-angellist"></i>
+        <div class="post-item-header-info">
+          <span> {{profile_username}}  </span>
+          <i class="fa fa-camera"></i>
+          <i class="fa fa-angellist"></i>
+          <div>@asksk</div>
+        </div>
       </div>
       <hr/>
       <div class="post-item-body" >
-        <span>{{item.title}}</span>
-        <span>{{item.message}}</span>
+        <div>{{item.title}}</div>
+        <div>{{item.message}}</div>
         <img class="post-item-profile-img" :src="profile_image"  >
+      </div>
+      <div class="post-item-footer" >
+        iam a footer
       </div>
     </div>
 
@@ -52,7 +56,6 @@ const vm = new Vue({
     console.log(this.profile_username);
   },
   mounted() {
-    // console.log("MOUNTED");
     this.t = setInterval(() => {
       this.intervallFunction();
     }, 2000);
