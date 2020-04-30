@@ -23,7 +23,7 @@ class PostRepository extends ServiceEntityRepository
     public function findAllPostByUser($user)
     {
       $qb =  $this->createQueryBuilder('p'); 
-      $qb->select("p.title, p.id")
+      $qb->select("p.title, p.id, i.message")
           ->where("p.user = :user")
           ->setParameter("user",$user);
 
@@ -37,6 +37,7 @@ class PostRepository extends ServiceEntityRepository
       $qb->select("p.title")
           ->addSelect("p.id as post_id")
           ->addSelect("p.image as image")
+          ->addSelect("p.message as message")
           ->addSelect("c.name")
           ->addSelect("c.id as category_id")
           ->innerJoin("p.category","c")
