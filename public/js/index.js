@@ -19,10 +19,10 @@ const vm = new Vue({
           <span> {{profile_username}}  </span>
           <i class="fa fa-camera"></i>
           <i class="fa fa-angellist"></i>
-          <div>@asksk</div>
+          <span>@asksk</span>
         </div>
       </div>
-      <hr/>
+      
       <div class="post-item-body" >
         <div>{{item.title}}</div>
         <div>{{item.message}}</div>
