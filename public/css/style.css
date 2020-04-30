@@ -41,16 +41,18 @@ li {
 
 
 .post-item{
-  width: 80%;
+  padding: 5px;
+  width: 70%;
   min-height:  120px;
-  background-color: #e5e5e5;
+  background-color: #fff;
   margin-top: 15px;
   border-radius: 9px;
   overflow: hidden;
+  border:1px solid #e1e8ed;
 }
 
 .post-item:hover{
-  border-style: 1px solid black;
+  border:1px solid #d9d9d9;
 }
 
 .post-item hr {
@@ -84,7 +86,6 @@ li {
 
 .post-item-header-info{
   flex:2;
-  background-color: aqua;
   padding: 5px;
   padding-left: 1rem;
 }
