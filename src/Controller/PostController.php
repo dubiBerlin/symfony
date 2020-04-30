@@ -31,7 +31,7 @@ class PostController extends AbstractController
       $posts = $postRepository->findAllPostByUser($this->getUser());
 
       return $this->render('post/index.html.twig', [
-        'posts' => $posts,
+        'posts' => $posts,"profile_image"=>$this->getUser()->getImage()
       ]);
     }
     
@@ -90,7 +90,7 @@ class PostController extends AbstractController
       $post = $postRepository->findPostWithCategory($id)["0"];
 
       // die;
- 
+
 
       // create the show view
       return $this->render("post/show.html.twig",["post"=>$post,"id"=>$id]);

@@ -15,7 +15,13 @@ const vm = new Vue({
   <transition-group tag="div" name="list">
 
     <div class="post-item" v-for="item in list" :key="item.id">
-    
+      <div class="post-item-header" >
+
+        <img class="post-item-profile-img" src=""  >
+      </div>
+      <div class="post-item-body" >
+      
+      </div>
     </div>
 
   </transition-group>
@@ -25,6 +31,7 @@ const vm = new Vue({
     pathShow: "",
     pathDelete: "",
     posts:"",
+    profile_image:"",
     maxId: 3,
     list: []
   },
@@ -32,7 +39,8 @@ const vm = new Vue({
     this.posts = JSON.parse(this.$el.attributes['data-posts'].value);
     this.pathShow = this.$el.attributes['data-pathShow'].value;
     this.pathDelete = this.$el.attributes['data-pathDelete'].value;
-    console.log("BEFORE MOUNT: ",typeof this.pathShow,"\n",this.pathDelete);
+    this.profile_image = this.$el.attributes['data-profile-image'].value;
+    console.log("PRofile image: ",this.profile_image);
   },
   mounted() {
     // console.log("MOUNTED");

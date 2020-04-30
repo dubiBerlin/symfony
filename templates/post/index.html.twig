@@ -28,7 +28,12 @@
     </tbody>
   </table> -->
 
-<div id="app" data-posts="{{posts|json_encode }}" data-pathShow="{{path("postshow",{id:"placeholderId"})}}" data-pathDelete="{{path("postdelete",{id:"placeholderId"})}}"  >
+<div id="app" 
+  data-posts="{{posts|json_encode }}" 
+  data-pathShow="{{path("postshow",{id:"placeholderId"})}}" 
+  data-pathDelete="{{path("postdelete",{id:"placeholderId"})}}"  
+  data-profile-image="{{ asset('uploads/') }}{{profile_image}}"  
+>
 </div>
 
  {% endblock %}
