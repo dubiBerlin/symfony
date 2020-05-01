@@ -132,13 +132,19 @@ li {
 }
 
 .post-item-footer{
+  margin-top:  10.4px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
 .post-item-footer-likes{
-  
+  font-size: 14px;
+  color:#697882;
+}
+
+.post-item-footer-likes:hover{
+  color:#ff5311;
 }
 
 .list-enter-active,
