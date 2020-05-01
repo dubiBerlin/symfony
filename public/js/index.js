@@ -57,7 +57,7 @@ const vm = new Vue({
   },
   beforeMount: function () {
     this.posts = JSON.parse(this.$el.attributes['data-posts'].value);
-    this.posts = this.posts.map(post => { return { ...post, likes: Math.floor(Math.random() * 7000) + 1}}); 
+    this.posts = this.posts.map(post => { return { ...post, likes: this.random(7000)}}); 
     this.pathShow = this.$el.attributes['data-pathShow'].value;
     this.pathDelete = this.$el.attributes['data-pathDelete'].value;
     this.uploadFolder = this.$el.attributes['data-upload-folder'].value;
@@ -110,15 +110,16 @@ const vm = new Vue({
       const index = this.random(this.list.length - 1)
       this.list.splice(index, 1)
     },
-    async getRandomPost(){
-      let response = await fetch("http://localhost/sfcourse/public/index.php/post/random");
-      console.log(response.ok)
-      if (response.ok){
-        let post = response.json();
-        post.then(stuff=>{
-          console.log(stuff);
-        })
-      }
+    getRandomPost(){
+     ;(async () => {
+        const response = await fetch('http://localhost/sfcourse/public/index.php/post/random')
+        const data = await response.json()
+        
+        let post ={ ...data.randomPost, likes: this.random(7000)};
+        
+        console.log(post)
+      })()
+
     }
   }
 });
