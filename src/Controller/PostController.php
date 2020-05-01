@@ -97,7 +97,7 @@ class PostController extends AbstractController
      * description:  deletes selected post
      * @Route("/delete/{id}", name="delete")
      * @param id
-     * @return Response
+     * @return JsonResponse
      */
     public function remove(Post $post){
       $em = $this->getDoctrine()->getManager();
@@ -113,7 +113,7 @@ class PostController extends AbstractController
     /**
      * description: returns a random post from database
      * @Route("/random", name="random")
-     * @return JsonResponse
+     * @return Response
      */
     public function random(PostRepository $postRepository){
       
@@ -123,9 +123,8 @@ class PostController extends AbstractController
       
       $number_of_posts = sizeof($posts);
 
-      return new JsonResponse([
-        "post"=> $posts[random_int(0, $number_of_posts)]
-      ]);     
+      return new JsonResponse($posts[random_int(0, $number_of_posts)]);  
+      // return new Response( $posts[random_int(0, $number_of_posts)]);    
     }
 
 

@@ -71,7 +71,7 @@ const vm = new Vue({
   mounted() {
     this.t = setInterval(() => {
       this.intervallFunction();
-    }, 2000);
+    }, 500);
     console.log(this.posts);
   },
   methods: {
@@ -112,7 +112,13 @@ const vm = new Vue({
     },
     async getRandomPost(){
       let response = await fetch("http://localhost/sfcourse/public/index.php/post/random");
-      console.log("Response: ",response.json());
+      console.log(response.ok)
+      if (response.ok){
+        let post = response.json();
+        post.then(stuff=>{
+          console.log(stuff);
+        })
+      }
     }
   }
 });
