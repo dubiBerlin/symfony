@@ -115,9 +115,10 @@ const vm = new Vue({
         const response = await fetch('http://localhost/sfcourse/public/index.php/post/random')
         const data = await response.json()
         
-        let post ={ ...data.randomPost, likes: this.random(7000)};
-        
-        console.log(post)
+        this.list.push( {
+          ...data.randomPost,
+          likes: this.random(7000)
+        });
       })()
 
     }
