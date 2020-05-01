@@ -14,7 +14,9 @@ const vm = new Vue({
 
     <div class="post-item" v-for="item in list" :key="item.id">
       <div class="post-item-header" >
-        <img class="post-item-profile-img" :src="profile_image"  >
+        <img v-if="profile_image"  class="post-item-profile-img" :src="profile_image_path"  >
+        <i v-else class="fa fa-user-circle fa-2x" style="margin-top:4px" > </i>
+        
         <div class="post-item-header-info">
           <span> {{profile_username}}  </span>
           <i class="fa fa-camera"></i>
@@ -46,6 +48,7 @@ const vm = new Vue({
     pathDelete: "",
     posts:"",
     profile_image:"",
+    profile_image_path:"",
     uploadFolder:"",
     profile_username:"",
     maxId: 3,
@@ -58,7 +61,8 @@ const vm = new Vue({
     this.pathShow = this.$el.attributes['data-pathShow'].value;
     this.pathDelete = this.$el.attributes['data-pathDelete'].value;
     this.uploadFolder = this.$el.attributes['data-upload-folder'].value;
-    this.profile_image = `${this.uploadFolder}${this.$el.attributes['data-profile-image'].value}`;
+    this.profile_image = this.$el.attributes['data-profile-image'].value;
+    this.profile_image_path = `${this.uploadFolder}${this.profile_image}`;
     this.profile_username = this.$el.attributes['data-profile-username'].value;
     console.log("PRofile image: ",this.profile_image);
     console.log(this.posts);
