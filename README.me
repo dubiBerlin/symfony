@@ -2,6 +2,10 @@
 
 debug routes: php bin/console debug:route
 
+
+# after updating an entity with a prop
+php bin/console make:entity --regenerate
+
 # add schema to db or create table via schema
 php bin/console doctrine:schema:update --force
 php bin/console doctrine:schema:update --dump-sql

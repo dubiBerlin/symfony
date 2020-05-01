@@ -31,7 +31,7 @@ class PostController extends AbstractController
       $posts = $postRepository->findAllPostByUser($this->getUser());
 
       return $this->render('post/index.html.twig', [
-        'posts' => $posts,
+        'posts' => $posts,"profile_image"=>$this->getUser()->getImage()
       ]);
     }
     
@@ -61,7 +61,9 @@ class PostController extends AbstractController
          $filename = $fileUploader->uploadFile($file);
           $post->setImage($filename);
         }
+        $post->setCreatedAt(new \DateTime());
         $post->setUser($user);
+
 
         $em->persist($post);
         $em->flush();
@@ -89,9 +91,8 @@ class PostController extends AbstractController
       // $post = $postRepository->find($id);
       $post = $postRepository->findPostWithCategory($id)["0"];
 
-      dump($post);
       // die;
- 
+
 
       // create the show view
       return $this->render("post/show.html.twig",["post"=>$post,"id"=>$id]);

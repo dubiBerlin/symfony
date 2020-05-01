@@ -28,7 +28,7 @@ button:hover {
 ul {
   position: relative;
   padding-top: 18px;
-  width: 420px;
+  width: 100%;
 }
 
 li {
@@ -37,6 +37,130 @@ li {
   padding: 8px 12px;
   width: 100%;
   background-color: #e5e5e5;
+}
+
+
+.post-item{
+  padding: 20px 20px 11px 20px;
+  width: 540px;
+  min-height:  120px;
+  background-color: #fff;
+  margin:  10px auto;
+  border-radius: 5px;
+  overflow: hidden;
+  border:1px solid #e1e8ed;
+}
+
+.post-item:hover {
+  border:1px solid #d9d9d9;
+}
+
+.post-item-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.post-item-header i {
+   color: #1DA1F2;
+}
+
+.post-item-header i:nth-of-type(2) {
+   float:right;
+}
+
+.post-item-profile-img {
+  border-radius: 50%;
+  width: 40px;
+  
+}
+
+.post-item-header-info{
+  flex:2;
+  margin-left: 9px;
+  /* padding: 5px; */
+  /* padding-left: 1rem; */
+}
+
+.post-item-header-info  span:first-of-type {
+  color:#000;
+  font-weight: 700;
+}
+
+.post-item-header-info span:last-of-type {
+  display: block;
+  color: #697882;
+  font-size: 14px;
+  margin-top: -7px;
+}
+
+.post-item-header-info span:first-of-type:hover {
+  color: #1DA1F2;
+}
+
+.post-item hr {
+  width: 98%;
+}
+
+.post-item-body {
+  /* padding: 5px; */
+  margin-top: 10px;
+  color: #1c2022;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+.post-item-body > *{
+  margin-top: 3px;
+}
+
+.post-item-body div:first-of-type{
+  font-weight: 500;
+}
+
+.post-item-body > img {
+  max-width:100%;
+  height:auto;
+  border-radius: 5px;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.post-item-footer{
+  margin-top:  10.4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color:#697882;
+}
+
+
+.post-item-footer > i  {
+  flex:1;
+  text-align: right;
+}
+
+.post-item-footer-likes {
+  font-size: 14px;
+  text-align: left;
+}
+
+.post-item-footer > span {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.post-item-footer > span:hover {
+  color: #1DA1F2;
+}
+
+.post-item-footer-likes:hover{
+  color:#ff5311;
 }
 
 .list-enter-active,

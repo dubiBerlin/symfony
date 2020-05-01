@@ -25,6 +25,11 @@ class Post
     private $title;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $message;
+
+    /**
      * @ORM\Column(type="string", length=100)
      */
     private $image;
@@ -38,6 +43,11 @@ class Post
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="post")
      */
     private $user;
+
+    /**
+     * @ORM\Column(name="created_at", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     */
+    private $created_at;
 
     public function getId(): ?int
     {
@@ -91,4 +101,30 @@ class Post
 
         return $this;
     }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): self
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+
 }
