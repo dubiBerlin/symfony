@@ -47,7 +47,7 @@ class Post
     /**
      * @ORM\Column(name="created_at", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
-    private $createdAt;
+    private $created_at;
 
     public function getId(): ?int
     {
@@ -116,12 +116,12 @@ class Post
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setCreatedAt(\DateTimeInterface $created_at): self
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
 
         return $this;
     }
