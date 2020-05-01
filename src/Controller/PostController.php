@@ -90,10 +90,6 @@ class PostController extends AbstractController
 
       // $post = $postRepository->find($id);
       $post = $postRepository->findPostWithCategory($id)["0"];
-
-      // die;
-
-
       // create the show view
       return $this->render("post/show.html.twig",["post"=>$post,"id"=>$id]);
     }
@@ -116,6 +112,21 @@ class PostController extends AbstractController
       return $this->redirect($this->generateUrl("postindex"));
       
     }
+
+    
+
+    /**
+     * description:  deletes selected post
+     * @Route("/random", name="random")
+     * @param id
+     * @return Response
+     */
+    public function random(PostRepository $postRepository){
+      $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+      $totalPosts = $postRepository->countUserPosts($this->getUser());  
+      return new Response($totalPosts);      
+    }
+
 
 
 
