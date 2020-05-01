@@ -117,7 +117,7 @@ const vm = new Vue({
 
         let post = data.randomPost;
 
-        post.id = this.random(2000);
+        post.id = this.random(2000);// to avoid duplicate keys in loop
         
         this.list.push( {
           ...post,
