@@ -111,10 +111,9 @@ class PostController extends AbstractController
     } 
 
     /**
-     * description:  deletes selected post
+     * description: returns a random post from database
      * @Route("/random", name="random")
-     * @param id
-     * @return Response
+     * @return JsonResponse
      */
     public function random(PostRepository $postRepository){
       
