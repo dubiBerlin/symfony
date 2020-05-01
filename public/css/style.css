@@ -128,6 +128,11 @@ li {
 
 .post-item-body div:first-of-type{
   font-weight: 500;
+  cursor: pointer;
+}
+
+.post-item-body div:first-of-type:hover {
+  color:#697882;
 }
 
 .post-item-body > img {

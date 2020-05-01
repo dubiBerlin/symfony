@@ -10,12 +10,10 @@ const vm = new Vue({
     <button type="button" @click="reverse">Reverse posts</button>
   </div>
   <transition-group tag="div" name="list">
-
-    <div class="post-item" v-for="item in list" :key="item.id">
+    <div class="post-item"  v-for="item in list" :key="item.id">
       <div class="post-item-header" >
         <img v-if="profile_image"  class="post-item-profile-img" :src="profile_image_path"  >
-        <i v-else class="fa fa-user-circle fa-2x" style="margin-top:4px" > </i>
-        
+        <i v-else class="fa fa-user-circle fa-2x" style="margin-top:4px" > </i>    
         <div class="post-item-header-info">
           <span> {{profile_username}}  </span>
           <i class="fa fa-camera"></i>
@@ -25,7 +23,7 @@ const vm = new Vue({
       </div>
       
       <div class="post-item-body" >
-        <div>{{item.title}}</div>
+        <div @click="showPost(item.id)" >{{item.title}}</div>
         <div>{{item.message}}</div>
         <img  v-show="item.image"  :src="uploadFolder + item.image"  >
       </div>
@@ -68,6 +66,9 @@ const vm = new Vue({
     }, 1000);
   },
   methods: {
+     showPost(id, event) {
+       window.open(this.pathShow.replace("placeholderId", id), "_self");
+     },
     formatCreatedAt(createdAtObj){
       let createdAtSplitted = createdAtObj.split(" ");
       this.formatCreatedAtDate(createdAtSplitted[0]);
