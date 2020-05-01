@@ -131,9 +131,14 @@ li {
   ;
 }
 
-
 .post-item-footer{
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.post-item-footer-likes{
+  
 }
 
 .list-enter-active,

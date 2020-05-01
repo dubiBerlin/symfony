@@ -30,7 +30,12 @@ const vm = new Vue({
       </div>
 
       <div class="post-item-footer" >
-        {{item.image}}
+        <div class="post-item-footer-likes">
+          <i class="fa fa-heart"></i> {{item.likes }}
+        </div>
+        <div class="post-item-footer-likes">
+          12.05.2020
+        </div>
       </div>
     </div>
 
@@ -45,10 +50,12 @@ const vm = new Vue({
     uploadFolder:"",
     profile_username:"",
     maxId: 3,
-    list: []
+    list: [],
+    randomNumbers:[]
   },
   beforeMount: function () {
     this.posts = JSON.parse(this.$el.attributes['data-posts'].value);
+    this.posts = this.posts.map(post => { return { ...post, likes: Math.floor(Math.random() * 7000) + 1}}); 
     this.pathShow = this.$el.attributes['data-pathShow'].value;
     this.pathDelete = this.$el.attributes['data-pathDelete'].value;
     this.uploadFolder = this.$el.attributes['data-upload-folder'].value;
