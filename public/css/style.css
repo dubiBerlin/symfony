@@ -136,11 +136,27 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color:#697882;
 }
 
-.post-item-footer-likes{
+
+.post-item-footer > i  {
+  flex:1;
+  text-align: right;
+}
+
+.post-item-footer-likes {
   font-size: 14px;
-  color:#697882;
+  text-align: left;
+}
+
+.post-item-footer > span {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.post-item-footer > span:hover {
+  color: #1DA1F2;
 }
 
 .post-item-footer-likes:hover{

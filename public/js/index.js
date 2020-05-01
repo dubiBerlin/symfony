@@ -31,11 +31,10 @@ const vm = new Vue({
 
       <div class="post-item-footer" >
         <div class="post-item-footer-likes">
-          <i class="fa fa-heart"></i> {{item.likes }}
+          <i class="fa fa-heart"></i> <span>{{item.likes }}</span>
         </div>
-        <div class="post-item-footer-likes">
-          12.05.2020
-        </div>
+        <span>{{formatCreatedAt(item.created_at.date)}}</span>
+        <i class="fa fa-question-circle"></i>
       </div>
     </div>
 
@@ -72,6 +71,16 @@ const vm = new Vue({
     console.log(this.posts);
   },
   methods: {
+    formatCreatedAt(createdAtObj){
+      let createdAtSplitted = createdAtObj.split(" ");
+      this.formatCreatedAtDate(createdAtSplitted[0]);
+      let time = createdAtSplitted[1];
+      return `${this.formatCreatedAtDate(createdAtSplitted[0])} - ${time.split(".")[0]}`; 
+    },
+    formatCreatedAtDate(date){
+      date = date.split("-");
+      return `${date[2]}.${date[1]}.${date[0]}`;
+    },
     reverse() {
       this.list.reverse();
     },
