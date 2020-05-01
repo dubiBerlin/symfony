@@ -7,7 +7,7 @@ const vm = new Vue({
   <div>
   <div>
     <button type="button" @click="add">Add</button>
-    <button type="button" @click="remove">Remove</button>
+    <button type="button" @click="getRandomPost">Get Random Post</button>
     <button type="button" @click="reverse">Sortieren</button>
   </div>
   <transition-group tag="div" name="list">
@@ -109,6 +109,10 @@ const vm = new Vue({
     remove() {
       const index = this.random(this.list.length - 1)
       this.list.splice(index, 1)
+    },
+    async getRandomPost(){
+      let response = await fetch("http://localhost/sfcourse/public/index.php/post/random");
+      console.log("Response: ",response.json());
     }
   }
 });
