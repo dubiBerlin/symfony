@@ -13,17 +13,23 @@ body {
 button {
   padding: 8px 30px;
   border-width: 0;
-  background-color: #505050;
-  color: #fff;
+  background-color: #fff;
+  color: #1DA1F2;
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
+  border: 2px solid #1DA1F2;
+  border-radius: 5px;
   transition: opacity 100ms ease-out;
-  
 }
 
 button:hover {
   opacity: 0.7;
+}
+
+button:active{
+  color: #fff;
+  background-color: #1DA1F2;
 }
 
 ul {
