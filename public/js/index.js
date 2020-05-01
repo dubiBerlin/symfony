@@ -96,14 +96,15 @@ const vm = new Vue({
      ;(async () => {
         const response = await fetch('http://localhost/sfcourse/public/index.php/post/random')
         const data = await response.json();
+        
+        if (data.randomPost == null) {
+          return;
+        }
 
-        let post = data.randomPost;
-        console.log(post);
-
-        post.id = this.random(2000);// to avoid duplicate keys in loop
+        data.randomPost.id = this.random(2000); // to avoid duplicate keys in loop
         
         this.list.push( {
-          ...post,
+          ...data.randomPost,
           likes: this.random(7000)
         });
       })()

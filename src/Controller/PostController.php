@@ -125,31 +125,8 @@ class PostController extends AbstractController
       
       $posts = $postRepository->findAllPostByUser($this->getUser());  
       
-      $number_of_posts = sizeof($posts)-1;
-
-      return new JsonResponse(["randomPost"=>$posts[random_int(0, $number_of_posts)]]);  
+      $post = sizeof($posts) > 0 ? $posts[random_int(0, sizeof($posts)-1)] : null;       
+      
+      return new JsonResponse(["randomPost"=>$post]);  
     }
-
-
-
-
-
-
-    // /**
-    //  * description:  gets selected post and displays it
-    //  * @Route("/show/{id}", name="show")
-    //  * @param Post $post
-    //  * @return Response
-    //  */
-    // public function show(Post $post){
-    //   if($post==null){
-    //     // dump("");
-    //     return new Response("Post with such id does not exist");
-    //   }else{
-    //     dump($post); 
-    //     die;
-    //     // create the show view
-    //     return $this->render("show.html.twig",["post"=>$post]);
-    //   }
-    // }
 }
