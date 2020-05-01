@@ -63,7 +63,7 @@ const vm = new Vue({
   mounted() {
     this.t = setInterval(() => {
       this.intervallFunction();
-    }, 1000);
+    }, 2000);
   },
   methods: {
      showPost(id, event) {
@@ -87,7 +87,7 @@ const vm = new Vue({
     },
     intervallFunction() {
       if (this.posts.length > 0) {
-        this.list.push(this.posts.pop());
+        this.list.splice(0, 0, this.posts.pop());
       } else {
         window.clearInterval(this.t);
       }
