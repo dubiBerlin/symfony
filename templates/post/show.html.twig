@@ -4,12 +4,14 @@
 
  {% block body %}
   {% if post!=null  %}
-    <h2>id: {{post.post_id}}</h2>
-    <h2>Title: {{post.title}}</h2>
-    <em>  Category: {{ post.name }}</em>  
-    <img src="{{ asset('uploads/') }}{{post.image}}"  class="gallery-thumb" >
+  <div class="show-post-container">
+    <span>{{post.post_id}}</span>
+    <span>{{post.title}}</span>
+    <span>  Category: {{ post.name }}</span>  
+    <img src="{{ asset('uploads/') }}{{post.image}}" style="max-width:100%;height:auto;"  class="gallery-thumb" >
    <p>{{ post.message }}</p>
    {% else %} 
     <h2> Es gibt keinen Eintrag mit der ID {{id}} </h2>
    {% endif %}
+  </div>
  {% endblock %}
