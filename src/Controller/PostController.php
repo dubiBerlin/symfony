@@ -123,7 +123,7 @@ class PostController extends AbstractController
       
       $number_of_posts = sizeof($posts);
 
-      return new JsonResponse(["randomPost"=>$posts[random_int(0, $number_of_posts)]]);  
+      return new JsonResponse(["randomPost"=>$posts[random_int(1, $number_of_posts)]]);  
     }
 
 
