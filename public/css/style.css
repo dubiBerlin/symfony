@@ -214,6 +214,31 @@ li {
   margin: 50px auto;
 }
 
+
+/**/
+.show-post-container{
+  margin-top: 20px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.show-post-container > span{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.show-post-container> img {
+  border-radius: 5px;
+  display:block;
+  margin:auto;
+}
+
+.show-post-container> p {
+  margin-top: 10px;
+}
+
 @media screen and (max-width: 620px) {
   .post-item {
     width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
