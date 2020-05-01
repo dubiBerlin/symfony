@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Entity\Post;
 use App\Entity\User;
@@ -68,10 +69,7 @@ class PostController extends AbstractController
         $em->persist($post);
         $em->flush();
         return $this->redirect($this->generateUrl("postindex"));
-      }
-
-
-      
+      }      
 
       // return a response
       // return  $this->redirect($this->generateUrl("postindex"));//new Response("Post was created!");
@@ -110,10 +108,7 @@ class PostController extends AbstractController
      
       // create the show view
       return $this->redirect($this->generateUrl("postindex"));
-      
-    }
-
-    
+    } 
 
     /**
      * description:  deletes selected post
@@ -124,7 +119,10 @@ class PostController extends AbstractController
     public function random(PostRepository $postRepository){
       $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
       $totalPosts = $postRepository->countUserPosts($this->getUser());  
-      return new Response($totalPosts);      
+      // return new Response($totalPosts); 
+      return new JsonResponse([
+        "post"=>["title"=>"Random title","message"=>"aaaa loooong message"]
+      ]);     
     }
 
 
