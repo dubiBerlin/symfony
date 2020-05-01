@@ -6,7 +6,6 @@ const vm = new Vue({
   template: `
   <div>
   <div>
-    <button type="button" @click="add">Add</button>
     <button type="button" @click="getRandomPost">Get Random Post</button>
     <button type="button" @click="reverse">Sortieren</button>
   </div>
@@ -51,9 +50,7 @@ const vm = new Vue({
     profile_image_path:"",
     uploadFolder:"",
     profile_username:"",
-    maxId: 3,
-    list: [],
-    randomNumbers:[]
+    list: []
   },
   beforeMount: function () {
     this.posts = JSON.parse(this.$el.attributes['data-posts'].value);
@@ -64,15 +61,11 @@ const vm = new Vue({
     this.profile_image = this.$el.attributes['data-profile-image'].value;
     this.profile_image_path = `${this.uploadFolder}${this.profile_image}`;
     this.profile_username = this.$el.attributes['data-profile-username'].value;
-    console.log("PRofile image: ",this.profile_image);
-    console.log(this.posts);
-    console.log(this.profile_username);
   },
   mounted() {
     this.t = setInterval(() => {
       this.intervallFunction();
-    }, 500);
-    console.log(this.posts);
+    }, 1000);
   },
   methods: {
     formatCreatedAt(createdAtObj){
@@ -97,18 +90,6 @@ const vm = new Vue({
       } else {
         window.clearInterval(this.t);
       }
-    },
-    deletePost(id,event){
-      Window.open(this.pathDelete.replace("placeholderId",id));
-    },
-    add() {
-      const id = ++this.maxId
-      const index = this.random(this.list.length)
-      this.list.splice(index, 0, { id })
-    },
-    remove() {
-      const index = this.random(this.list.length - 1)
-      this.list.splice(index, 1)
     },
     getRandomPost(){
      ;(async () => {
