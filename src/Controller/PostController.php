@@ -117,11 +117,15 @@ class PostController extends AbstractController
      * @return Response
      */
     public function random(PostRepository $postRepository){
+      
       $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-      $totalPosts = $postRepository->countUserPosts($this->getUser());  
-      // return new Response($totalPosts); 
+      
+      $posts = $postRepository->findAllPostByUser($this->getUser());  
+      
+      $number_of_posts = sizeof($posts);
+
       return new JsonResponse([
-        "post"=>["title"=>"Random title","message"=>"aaaa loooong message"]
+        "post"=> $posts[random_int(0, $number_of_posts)]
       ]);     
     }
 
