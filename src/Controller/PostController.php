@@ -61,7 +61,9 @@ class PostController extends AbstractController
          $filename = $fileUploader->uploadFile($file);
           $post->setImage($filename);
         }
+        $post->setCreatedAt(new \DateTime());
         $post->setUser($user);
+
 
         $em->persist($post);
         $em->flush();

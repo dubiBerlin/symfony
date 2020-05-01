@@ -44,6 +44,11 @@ class Post
      */
     private $user;
 
+    /**
+     * @ORM\Column(name="created_at", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     */
+    private $createdAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -108,4 +113,18 @@ class Post
 
         return $this;
     }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+
 }
