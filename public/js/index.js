@@ -5,9 +5,9 @@ const vm = new Vue({
   name: "postLists", 
   template: `
   <div>
-  <div>
+  <div class="post-btn-container" >
     <button type="button" @click="getRandomPost">Get Random Post</button>
-    <button type="button" @click="reverse">Sortieren</button>
+    <button type="button" @click="reverse">Reverse posts</button>
   </div>
   <transition-group tag="div" name="list">
 
