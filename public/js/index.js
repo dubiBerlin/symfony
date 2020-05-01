@@ -98,6 +98,7 @@ const vm = new Vue({
         const data = await response.json();
 
         let post = data.randomPost;
+        console.log(post);
 
         post.id = this.random(2000);// to avoid duplicate keys in loop
         

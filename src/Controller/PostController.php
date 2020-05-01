@@ -125,7 +125,7 @@ class PostController extends AbstractController
       
       $posts = $postRepository->findAllPostByUser($this->getUser());  
       
-      $number_of_posts = sizeof($posts);
+      $number_of_posts = sizeof($posts)-1;
 
       return new JsonResponse(["randomPost"=>$posts[random_int(0, $number_of_posts)]]);  
     }

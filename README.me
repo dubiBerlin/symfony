@@ -13,3 +13,13 @@ php bin/console doctrine:schema:update --dump-sql
 
 #debug own service like /services/fileuploader
 php bin/console debug:container fileuploader
+
+How to run it?
+- first please navigate into the project folder named /Symfony and execute "composer install" or "php composer.phar install"
+- Install xampp
+- Paste the project folder in the xampp/htdocs folder 
+- than start the server and the mysql server from the xampp control panel
+- execute "php bin/console doctrine:database:create" to create a database in the terminal 
+  (the db name will be sfcourse but feel free to change the name in the .env file )
+- execute "php bin/console doctrine:schema:update --force" to create tables in the terminal
+- put http://localhost/symfony/public/index.php in the browser
