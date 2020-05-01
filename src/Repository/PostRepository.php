@@ -48,6 +48,15 @@ class PostRepository extends ServiceEntityRepository
       
     }
 
+    public function countUserPosts($user){
+      $qb =  $this->createQueryBuilder('p'); // p für Post
+      return $qb->select('count(p.id)')
+            ->where("p.user = :user")
+            ->setParameter("user",$user)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
 
     // /**
     //  * @return Post[] Returns an array of Post objects

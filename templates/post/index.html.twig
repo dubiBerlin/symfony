@@ -8,26 +8,7 @@
         {{ message }}
     </div>
 {% endfor %}
- <h2> List of all Posts</h2>
-<!--  <table class="table table-striped">
-  {{posts|json_encode }}
-    <thead>
-      <tr>
-        <td>ID</td>
-        <td>Title</td>
-      </tr>
-    </thead>
-    <tbody class="js-post-tbody">
-    {% for post in posts %}
-      <tr >
-        <td>{{post.id}}</td>
-        <td> <a href="{{ path("postshow",{id:post.id}) }}">{{post.title}}</a> </td>
-        <td> <a class="btn btn-danger" href="{{ path("postdelete",{id:post.id}) }}">Delete</a></td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table> -->
-
+<br/>
 <div id="app" 
   data-posts="{{posts|json_encode }}" 
   data-pathShow="{{path("postshow",{id:"placeholderId"})}}" 

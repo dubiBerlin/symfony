@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Entity\Post;
 use App\Entity\User;
@@ -68,10 +69,7 @@ class PostController extends AbstractController
         $em->persist($post);
         $em->flush();
         return $this->redirect($this->generateUrl("postindex"));
-      }
-
-
-      
+      }      
 
       // return a response
       // return  $this->redirect($this->generateUrl("postindex"));//new Response("Post was created!");
@@ -90,10 +88,6 @@ class PostController extends AbstractController
 
       // $post = $postRepository->find($id);
       $post = $postRepository->findPostWithCategory($id)["0"];
-
-      // die;
-
-
       // create the show view
       return $this->render("post/show.html.twig",["post"=>$post,"id"=>$id]);
     }
@@ -103,7 +97,7 @@ class PostController extends AbstractController
      * description:  deletes selected post
      * @Route("/delete/{id}", name="delete")
      * @param id
-     * @return Response
+     * @return JsonResponse
      */
     public function remove(Post $post){
       $em = $this->getDoctrine()->getManager();
@@ -114,8 +108,24 @@ class PostController extends AbstractController
      
       // create the show view
       return $this->redirect($this->generateUrl("postindex"));
+    } 
+
+    /**
+     * description: returns a random post from database
+     * @Route("/random", name="random")
+     * @return Response
+     */
+    public function random(PostRepository $postRepository){
       
+      $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+      
+      $posts = $postRepository->findAllPostByUser($this->getUser());  
+      
+      $number_of_posts = sizeof($posts);
+
+      return new JsonResponse(["randomPost"=>$posts[random_int(1, $number_of_posts)]]);  
     }
+
 
 
 
