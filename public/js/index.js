@@ -5,6 +5,9 @@ const vm = new Vue({
   name: "postLists", 
   template: `
   <div>
+  <div v-if="showAlert" class="alert alert-warning" role="alert">
+    Please create a post first before u try to get a random post out of your database! 
+  </div>
   <div class="post-btn-container" >
     <button type="button" @click="getRandomPost">Get Random Post</button>
     <button type="button" @click="reverse">Reverse posts</button>
@@ -48,7 +51,8 @@ const vm = new Vue({
     profile_image_path:"",
     uploadFolder:"",
     profile_username:"",
-    list: []
+    list: [],
+    showAlert:false
   },
   beforeMount: function () {
     this.posts = JSON.parse(this.$el.attributes['data-posts'].value);
@@ -98,6 +102,7 @@ const vm = new Vue({
         const data = await response.json();
         
         if (data.randomPost == null) {
+          this.showAlert=true;
           return;
         }
 
