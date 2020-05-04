@@ -98,7 +98,7 @@ const vm = new Vue({
     },
     getRandomPost(){
      ;(async () => {
-        const response = await fetch('http://localhost/sfcourse/public/index.php/post/random')
+        const response = await fetch('http://localhost/symfony/public/index.php/post/random')
         const data = await response.json();
         
         if (data.randomPost == null) {
